@@ -21,18 +21,18 @@
     padding: 20px;
   }
   .buttonstyle{
-    
+    border: 5px solid #000000;
     width: 600px;
     height: 200px;
     font-size: 50px;
     background-color: lightblue;
-    border: none;
+    margin: 10px;
     color: white;
   }
 </style>
 </head>
 <body>
-<table style="border: 1px solid #000000;">
+<table >
   <tr>
     <td>
       <div class="SignUpContainer">
@@ -59,6 +59,11 @@
         </div>
       </div>
     </td>
+    <td>
+      <div class="TakeQuizContainer">
+        <button id="TakeQuizBtn" class="buttonstyle">Take Quiz</button>
+      </div>
+    </td>
   </tr>
 </table>
 
@@ -78,6 +83,9 @@
 
   document.getElementById('SignInBtn').onclick = function() {
     toggleVisibility('signinInfo');
+  };
+  document.getElementById('TakeQuizBtn').onclick = function() {
+    alert("Ready to start the quiz?");
   };
 </script>
 </body>
