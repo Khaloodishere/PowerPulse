@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diet Plan Quiz</title>
+<style>
+    /* CSS styles */
+    body {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;        background-color: #f1f1f1;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card {
+        display: none;
+    }
+
+    .card.active {
+        display: block;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #e1d6a7;
+        color: rgb(0, 0, 0);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    .btn:hover {
+        background-color: #c1b993;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Diet Plan Quiz</h1>
+
+    <!-- Gender Card -->
+    <div class="card active" id="gender-card">
+        <h2>Gender</h2>
+        <label for="gender-male">
+            <input type="radio" name="gender" id="gender-male" value="male">
+            Male
+        </label>
+        <label for="gender-female">
+            <input type="radio" name="gender" id="gender-female" value="female">
+            Female
+        </label>
+        <button class="btn" onclick="nextPage('age-card')">Next</button>
+    </div>
+
+    <!-- Age Card -->
+    <div class="card" id="age-card">
+        <h2>Age</h2>
+        <label for="age">
+            <input type="number" name="age" id="age" min="18">
+        </label>
+        <button class="btn" onclick="nextPage('weight-card')">Next</button>
+    </div>
+
+    <!-- Current Weight Card -->
+    <div class="card" id="weight-card">
+        <h2>Current Weight</h2>
+        <label for="weight">
+            <input type="number" name="weight" id="weight">
+        </label>
+        <button class="btn" onclick="nextPage('goal-weight-card')">Next</button>
+    </div>
+
+    <!-- Goal Weight Card -->
+    <div class="card" id="goal-weight-card">
+        <h2>Goal Weight</h2>
+        <label for="goal-weight">
+            <input type="number" name="goal-weight" id="goal-weight">
+        </label>
+        <button class="btn" onclick="nextPage('height-card')">Next</button>
+    </div>
+
+    <!-- Height Card -->
+    <div class="card" id="height-card">
+        <h2>Height</h2>
+        <label for="height">
+            <input type="number" name="height" id="height">
+        </label>
+        <button class="btn" onclick="calculatePlan()">Calculate Plan</button>
+    </div>
+<br>
+<br>
+    <div id="message-box"></div>
+
+</div>
+
+<script>
+    // JavaScript functions
+    function nextPage(nextCardId) {
+        var currentCard = document.querySelector('.card.active');
+        currentCard.classList.remove('active');
+
+        var nextCard = document.getElementById(nextCardId);
+        nextCard.classList.add('active');
+    }
+
+    function calculatePlan() {
+        var gender = document.querySelector('input[name="gender"]:checked').value;
+        var age = parseInt(document.getElementById("age").value);
+        var weight = parseFloat(document.getElementById("weight").value);
+        var goalWeight = parseFloat(document.getElementById("goal-weight").value);
+        var height = parseFloat(document.getElementById("height").value);
+        var bmi = weight / Math.pow((height / 100), 2);
+        var plan = "";
+        if (bmi < 18.5) {
+            plan = "Underweight Diet Plan";
+        } else if (bmi >= 18.5 && bmi < 25) {
+            plan = "Healthy Weight Diet Plan";
+        } else if (bmi >= 25 && bmi < 30) {
+            plan = "Overweight Diet Plan";
+        } else {
+            plan = "Obesity Diet Plan";
+        }
+
+        var messageBox = document.getElementById("message-box");
+        messageBox.innerHTML = "<strong>Your Recommended Diet Plan:</strong> " + plan;
+    }    
+</script>
+
+</body>
+</html>
