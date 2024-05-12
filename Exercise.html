@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+
+        var showCategory = true;
+        var showDuration = true;
+        var showOrder    = true;
+
+        function cyclePhotos() {
+            var Pushups = document.getElementById('pushupImage');  
+            var PushupsDetails = document.getElementById('detailsImage-pushups');
+            var delayInSeconds = 1;                            
+            var pushupsImages = ['Assets/aimations/Pushups/pic1.png', 'Assets/aimations/Pushups/pic2.png'];
+            var num = 0;
+            var changeImage = function() {
+                num++;
+                Pushups.src = pushupsImages[num];
+                PushupsDetails.src = pushupsImages[num];
+                if (num === 1) {
+                    num = -1;
+                }
+            }
+
+            setInterval(changeImage, delayInSeconds * 1000);
+        }
+
+        function showDetails(exercise) {
+            document.getElementById(exercise).style.visibility = "visible";
+            document.getElementById("blackBackground").style.visibility = "visible";
+        }
+
+        function hide(exercise) {
+            document.getElementById(exercise).style.visibility = "hidden";
+            document.getElementById("blackBackground").style.visibility = "hidden";
+        }
+
+
+        function toggleFilter(filterToShow) {
+            if(filterToShow === "Category" && showCategory) {
+                document.getElementById("Category").style.visibility = "visible";
+                document.getElementById("Duration").style.visibility = "hidden";
+                document.getElementById("Order").style.visibility    = "hidden";
+                showCategory = false;
+                showDuration = true;
+                showOrder = true;
+            } else if(filterToShow === "Duration" && showDuration) {
+                document.getElementById("Category").style.visibility = "hidden";
+                document.getElementById("Duration").style.visibility = "visible";
+                document.getElementById("Order").style.visibility    = "hidden";
+                showDuration = false;
+                showCategory = true;
+                showOrder = true;
+            } else if(filterToShow === "Order" && showOrder) {
+                document.getElementById("Category").style.visibility = "hidden";
+                document.getElementById("Duration").style.visibility = "hidden";
+                document.getElementById("Order").style.visibility    = "visible";
+                showDuration = true;
+                showCategory = true;
+                showOrder = false;
+            } else {
+                document.getElementById("Category").style.visibility = "hidden";
+                document.getElementById("Duration").style.visibility = "hidden";
+                document.getElementById("Order").style.visibility    = "hidden";
+                showCategory = true;
+                showDuration = true;
+                showOrder = true;
+            }
+        }
+
+
+
+
+
+        window.onload=function() {
+        cyclePhotos();
+        }
+
+    </script>
+
+    <style>
+
+                
+        body{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .topBar{
+            height: 75px;
+            width: 100%;
+            position: relative;
+            top: 0px;
+            display: flex;
+        }
+
+        .topBarItems{
+            position: absolute;
+            right: 0px;
+            width: auto;
+            height: 100%;
+        }
+
+        .topBarButton{
+            height: 100%;
+            width: 150px;
+            background-color: #add8e6;
+            border: solid 2px black;
+            color: white;
+            font-size: 15px;
+        }
+
+        .topBarButton:hover{
+            cursor: pointer;
+            background-color: #80a0aa;
+        }
+
+        .topBarButton:active{
+            background-color: #357f97;
+        }
+
+        .welcomeDiv{
+            background: white;
+            font-size: 60px;
+            width: auto;
+            height: 100px;
+            margin-left: 12%;
+        }
+
+        .todaysText{
+            font-size: 30px;
+            margin-left: 12%;
+        }
+
+        .filter{
+            margin-left: 10%;
+        }
+
+        .filterButton{
+            display: inline-block;
+            width: 200px;
+            height: 30px;
+            margin-right: 25px;
+            background-color: #d7d7d7;
+            border-radius: 50px;
+        }
+
+        .filterButton:hover{
+            cursor: pointer;
+            background-color: #b1b1b1;
+        }
+
+        .filterButton:active{
+            background-color: #6b6a6a;
+        }
+
+        .filterLabel{
+            position: relative;
+            left: 10%;
+            top: 50%;
+            transform: translate(0, -50%);
+            color: black;
+            
+        }
+
+        .filterIcon{
+            width: 25px;
+            position: relative;
+            left: 80%;
+            bottom: 56%;
+        }
+
+        .filterOption{
+            text-align: center;
+            padding: 7px;
+            margin: 10px;
+            background-color: #d7d7d7;
+            border-radius: 100px;
+
+        }
+
+        .Category, .Duration, .Order{
+            background-color: #b1b1b1;
+            width: 200px;
+            height: 185px;
+            position: absolute;
+            visibility: hidden;
+            z-index: 100;
+            border-radius: 20px;
+        }
+
+        .Duration{
+            left: calc(10% + 235px);
+            height: 200px;
+        }
+
+        .Order{
+            left: calc(10% + 465px);
+            height: 145px;
+        }
+
+        .filterOption:hover{
+            cursor: pointer;
+            background-color: #b1b1b1;
+        }
+
+        .filterOption:active{
+            background-color: #6b6a6a;
+        }
+
+        .exercise{
+            background-color: #add8e6;
+            width: 80%;
+            height: 100px;
+            margin-left: 10%;
+            border: solid 2px black;
+            display: grid;
+            grid-template-columns: 25% 25% 25% 25%;
+            margin-bottom: 15px;
+        }
+
+        .exercise:hover{
+            cursor: pointer;
+            background-color: #80a0aa;
+        }
+
+        .exercise:active{
+            background-color: #357f97;
+        }
+
+        .exerciseDetails{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 75%;
+            height: 75%;
+            background-color: white;
+            border-radius: 40px;
+            visibility: hidden;
+            z-index: 2;
+        }
+
+
+        .exerciseImg{
+            height: 100%;
+            position: relative;
+            top: 0%;
+            z-index: 0;
+        }
+
+        .exerciseLabel, .exerciseCount, .exercieSets{
+            align-self: center;
+            color: white;
+        }
+
+        .blackBackground{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            opacity: 0.6;
+            background-color: black;
+            z-index: 1;
+            visibility: hidden;
+        }
+
+        .detailsImage-pushups{
+            height: 100%;
+            position: relative;
+            left: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            
+        }
+
+        .details{
+            position: absolute;
+            z-index: 3;
+            right: 30px;
+            background-color: #add8e6;
+            width: 400px;
+            height: 80%;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            border-radius: 25px;
+        }
+
+
+        .details h1{
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .details p{
+            font-size: x-large;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .exitButton{
+            background-color: white;
+            border-radius: 100px;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: -2vh;
+            right: -2vh;
+            border: 2px solid black;
+        }
+
+        .exitButton:hover{
+            background-color: #b1b1b1;
+            cursor: pointer;
+        }
+
+        .exitButton:active{
+            background-color: #6b6a6a;
+        }
+
+        .exitButton img{
+            width: 80%;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="blackBackground" id="blackBackground"></div>
+    <div class="topBar">
+        <div class="topBarItems">
+            <button class="topBarButton">Sign Up</button>
+            <button class="topBarButton">Sign In</button>
+            <button class="topBarButton">Take Quiz</button>
+        </div>
+    </div>
+    <br><br><br><br><br><br>
+    <div class="welcomeDiv">
+        Welcome to PWRPulse! 🏋️
+    </div>
+    <div class="todaysText">
+        Here's the training plan for today:
+    </div>
+    <br><br><br>
+    <div class="filter">
+        <div class="filterButton" onclick="toggleFilter('Category')"><div class="filterLabel">Category</div><img class="filterIcon" src="Assets/icons/category.png" alt="category Icon"></div>
+        <div class="Category" id="Category">
+            <div class="filterOption">Arm workouts</div>
+            <div class="filterOption">Leg workouts</div>
+            <div class="filterOption">Chest workouts</div>
+            <div class="filterOption">Clear</div>
+        </div>
+        <div class="filterButton" onclick="toggleFilter('Duration')"><div class="filterLabel">Duration</div><img class="filterIcon" src="Assets/icons/clock.png" alt="clock Icon"></div>
+        <div class="Duration" id="Duration">
+            <div class="filterOption">less than 5 minutes</div>
+            <div class="filterOption">5 - 10 minutes</div>
+            <div class="filterOption">more than 10 minutes</div>
+            <div class="filterOption">Clear</div>
+        </div>
+        <div class="filterButton" onclick="toggleFilter('Order')"><div class="filterLabel">Order</div><img class="filterIcon" src="Assets/icons/order.png" alt="decending order Icon"></div>
+        <div class="Order" id="Order">
+            <div class="filterOption">Ascending</div>
+            <div class="filterOption">Descending</div>
+            <div class="filterOption">Clear</div>
+        </div>
+    </div>
+    <div class="exercise" onclick="showDetails('pushups')">
+        <img class="exerciseImg" id="pushupImage" src="Assets/aimations/Pushups/pic1.png" alt="Pushups">
+        <div class="exerciseLabel">Push Ups</div>
+        <div class="exerciseCount">x15</div>
+        <div class="exercieSets">3 Sets</div>
+    </div>
+    
+    <div class="exerciseDetails" id="pushups">
+        <img class="detailsImage-pushups" id="detailsImage-pushups" src="Assets/aimations/Pushups/pic1.png" alt="pushupImage">
+        <div class="details">
+            <h1>Push Ups <br> x15 - 3 Sets
+            </h1>
+            <p>
+                Assume a strong plank position, hands stacked directly below elbows and shoulders (A), bend your elbows to slowly lower your chest to the floor (B). Keep your upper arms from flaring as you push back up explosively to a straight arm position. Repeat.
+            </p>
+        </div>
+        <div class="exitButton">
+            <img src="Assets/icons/cross.png" alt="cross icon" onclick="hide('pushups');">
+        </div>
+    </div>
+
+    
+    
+</body>
+</html>
