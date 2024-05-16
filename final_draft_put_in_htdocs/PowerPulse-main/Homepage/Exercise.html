@@ -14,13 +14,58 @@
         function cyclePhotos() {
             var Pushups = document.getElementById('pushup-Image');
             var PushupsDetails = document.getElementById('detailsImage-pushups');
-            var delayInSeconds = 1;                            
+
+
+            var feetElevatedPushups = document.getElementById('feetElevatedPushups-Image');
+            var feetElevatedPushupsDetails = document.getElementById('detailsImage-feetElevatedPushups');
+
+
+            var handsElevatedPushups = document.getElementById('handsElevatedPushups-Image');
+            var handsElevatedPushupsDetails = document.getElementById('detailsImage-handsElevatedPushups');
+
+            var benchDip = document.getElementById('benchDip-Image');
+            var benchDipDetails = document.getElementById('detailsImage-benchDip');
+
+            var airSquats = document.getElementById('airSquats-Image');
+            var airSquatsDetails = document.getElementById('detailsImage-airSquats');
+
+            var forwardLunge = document.getElementById('forwardLunge-Image');
+            var forwardLungeDetails = document.getElementById('detailsImage-forwardLunge');
+
+            var butterflySitups = document.getElementById('butterflySitups-Image');
+            var butterflySitupsDetails = document.getElementById('detailsImage-butterflySitups');
+
+            var delayInSeconds = 1;
+
+
             var pushupsImages = ['Assets/aimations/Pushups/pic1.png', 'Assets/aimations/Pushups/pic2.png'];
+            var feetElevatedPushupsImages = ['Assets/aimations/feetElevatedPushups/pic1.png', 'Assets/aimations/feetElevatedPushups/pic2.png'];
+            var handsElevatedPushupsImages = ['Assets/aimations/handsElevatedPushups/pic1.png', 'Assets/aimations/handsElevatedPushups/pic2.png'];
+            var benchDipImages = ['Assets/aimations/benchDip/pic1.png', 'Assets/aimations/benchDip/pic2.png'];
+            var airSquatsImages = ['Assets/aimations/air-squat/pic1.png', 'Assets/aimations/air-squat/pic2.png'];
+            var forwardLungeImages = ['Assets/aimations/forwardLunge/pic1.png', 'Assets/aimations/forwardLunge/pic2.png'];
+            var butterflySitupsImages = ['Assets/aimations/butterflySitup/pic1.png', 'Assets/aimations/butterflySitup/pic2.png'];
+            
             var num = 0;
             var changeImage = function() {
+
+
                 num++;
                 Pushups.src = pushupsImages[num];
                 PushupsDetails.src = pushupsImages[num];
+                feetElevatedPushups.src = feetElevatedPushupsImages[num];
+                feetElevatedPushupsDetails.src = feetElevatedPushupsImages[num];
+                handsElevatedPushups.src = handsElevatedPushupsImages[num];
+                handsElevatedPushupsDetails.src = handsElevatedPushupsImages[num];
+                benchDip.src = benchDipImages[num];
+                benchDipDetails.src = benchDipImages[num];
+                airSquats.src = airSquatsImages[num];
+                airSquatsDetails.src = airSquatsImages[num];
+                forwardLunge.src = forwardLungeImages[num];
+                forwardLungeDetails.src = forwardLungeImages[num];
+                butterflySitups.src = butterflySitupsImages[num];
+                butterflySitupsDetails.src = butterflySitupsImages[num];
+
                 if (num === 1) {
                     num = -1;
                 }
@@ -205,7 +250,7 @@
         }
 
         .exerciseDetails{
-            position: absolute;
+            position: fixed;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
@@ -232,7 +277,7 @@
         }
 
         .blackBackground{
-            position: absolute;
+            position: fixed;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
@@ -244,7 +289,7 @@
             visibility: hidden;
         }
 
-        .detailsImage-pushups{
+        .detailsImage{
             height: 100%;
             position: relative;
             left: 50px;
@@ -383,7 +428,7 @@
     </div>
     
     <div class="exerciseDetails" id="pushups">
-        <img class="detailsImage-pushups" id="detailsImage-pushups" src="Assets/aimations/Pushups/pic1.png" alt="pushupImage">
+        <img class="detailsImage" id="detailsImage-pushups" src="Assets/aimations/Pushups/pic1.png" alt="pushupImage">
         <div class="details">
             <h1>Push Ups <br> x15 - 3 Sets
             </h1>
@@ -405,7 +450,7 @@
 </div>
 
 <div class="exerciseDetails" id="feetElevatedPushups">
-    <img class="detailsImage-feetElevatedPushups" id="detailsImage-feetElevatedPushups" src="Assets/aimations/feetElevatedPushups/pic1.png" alt="feetElevatedPushupsImage">
+    <img class="detailsImage" id="detailsImage-feetElevatedPushups" src="Assets/aimations/feetElevatedPushups/pic1.png" alt="feetElevatedPushupsImage">
     <div class="details">
         <h1>Feet Elevated Pushups <br> x15 - 3 Sets
         </h1>
@@ -426,7 +471,7 @@
 </div>
 
 <div class="exerciseDetails" id="handsElevatedPushups">
-    <img class="detailsImage-handsElevatedPushups" id="detailsImage-handsElevatedPushups" src="Assets/aimations/handsElevatedPushups/pic1.png" alt="handsElevatedPushupsImage">
+    <img class="detailsImage" id="detailsImage-handsElevatedPushups" src="Assets/aimations/handsElevatedPushups/pic1.png" alt="handsElevatedPushupsImage">
     <div class="details">
         <h1>Feet Elevated Pushups <br> x15 - 3 Sets
         </h1>
@@ -447,7 +492,7 @@
 </div>
 
 <div class="exerciseDetails" id="benchDip">
-    <img class="detailsImage-benchDip" id="detailsImage-benchDip" src="Assets/aimations/benchDip/pic1.png" alt="benchDipImage">
+    <img class="detailsImage" id="detailsImage-benchDip" src="Assets/aimations/benchDip/pic1.png" alt="benchDipImage">
     <div class="details">
         <h1>Feet Elevated Pushups <br> x15 - 3 Sets
         </h1>
@@ -468,7 +513,7 @@
 </div>
 
 <div class="exerciseDetails" id="airSquats">
-    <img class="detailsImage-airSquats" id="detailsImage-airSquats" src="Assets/aimations/air-squat/pic1.png" alt="airSquatsImage">
+    <img class="detailsImage" id="detailsImage-airSquats" src="Assets/aimations/air-squat/pic1.png" alt="airSquatsImage">
     <div class="details">
         <h1>Feet Elevated Pushups <br> x15 - 3 Sets
         </h1>
@@ -489,7 +534,7 @@
 </div>
 
 <div class="exerciseDetails" id="forwardLunge">
-    <img class="detailsImage-airSquats" id="detailsImage-forwardLunge" src="Assets/aimations/forwardLunge/pic1.png" alt="forwardLungeImage">
+    <img class="detailsImage" id="detailsImage-forwardLunge" src="Assets/aimations/forwardLunge/pic1.png" alt="forwardLungeImage">
     <div class="details">
         <h1>Feet Elevated Pushups <br> x15 - 3 Sets
         </h1>
@@ -510,7 +555,7 @@
 </div>
 
 <div class="exerciseDetails" id="butterflySitups">
-    <img class="detailsImage-airSquats" id="detailsImage-butterflySitups" src="Assets/aimations/butterflySitup/pic1.png" alt="butterflySitupsImage">
+    <img class="detailsImage" id="detailsImage-butterflySitups" src="Assets/aimations/butterflySitup/pic1.png" alt="butterflySitupsImage">
     <div class="details">
         <h1>Feet Elevated Pushups <br> x15 - 3 Sets
         </h1>
