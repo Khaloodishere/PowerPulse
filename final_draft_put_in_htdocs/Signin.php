@@ -10,7 +10,18 @@ $conn = new mysqli($db_host, $db_user, $db_pass, $db, 3306);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+if (isset($_GET['logout'])) {
+    $_SESSION['logged_in'] = false;
+    // Unset all session variables
+    $_SESSION = array();
 
+    // Destroy the session
+    session_destroy();
+
+    // Redirect to the sign in page or any other page
+    header("Location: sign_in.html");
+    exit();
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['password'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'];
@@ -24,6 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['passw
         // Verify the password using MD5
         if (md5($password) === $row['Password']) { // Assuming passwords stored are MD5 hashes
             $_SESSION['email'] = $email;
+            $_SESSION['logged_in'] = false;
             header("Location: PowerPulse-main\Homepage\Home.html"); // Redirect to a new page
             exit();
         } else {

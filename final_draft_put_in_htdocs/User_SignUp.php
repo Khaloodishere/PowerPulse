@@ -14,13 +14,13 @@ try {
 if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
-    
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
     // Hash the password using MD5 before saving to the database
     $hashed_password = md5($password);
 
     // Insert the user data into the database
-    $stmt = $conn->prepare("INSERT INTO user (Email, Password) VALUES (?, ?)");
-    $stmt->bind_param("ss", $email, $hashed_password);
+    $stmt = $conn->prepare("INSERT INTO user (Email, Password, UserName) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $email, $hashed_password, $username);
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {

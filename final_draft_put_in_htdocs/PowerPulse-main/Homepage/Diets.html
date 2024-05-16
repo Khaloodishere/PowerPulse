@@ -2,6 +2,7 @@
 <html>
 <head>
   <style>
+    
       .filterDiv {
       display: none;
     }
@@ -17,9 +18,13 @@
       justify-content: center;
     }
 
+   
     /* Style the buttons */
     .btn {
       border: none;
+      border-radius: 10px;
+      justify-content: center; /* Center the buttons horizontally */
+
       outline: none;
       padding: 10px 20px;
       background-color: #d6d6d6;
@@ -28,11 +33,15 @@
 
     .btn:hover {
       background-color: #ddd;
+      justify-content: center; /* Center the buttons horizontally */
+
     }
 
     .btn.active {
       background-color: #060606;
       color: white;
+      justify-content: center; /* Center the buttons horizontally */
+
     }
 
     .card {
@@ -66,14 +75,68 @@
       'Lucida Sans', Arial, sans-serif;
 }
 
+h1, h2  {
+text-align:center ;}
+
+.myBtnContainer {
+text-align:center ;}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+
+nav {
+  height: 80px;
+  background: #007400f2;
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+}
+nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: larger;
+  padding: 20px;
+}
+
+nav a:hover {
+  color: #838383;
+}
+.logo {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0 2rem;
+}
   </style>
+</head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PWRpulse</title>
 </head>
 <body>
 
+  <nav>
+    <a href="Home.html" target="_self"><div class="logo">PWRpulse</div></a>
+    <div class="nav-items">
+       <a href="Exercise.html">Exercises</a> <a href="sign_in.html">Sign In</a><a href="sign_up.html">Sign up</a>
+    </div>
+  </nav>
+<br>
 <h1>Recipes</h1>
+<br>
 <h2>Filter according to your preference</h2>
+<br>
 
-<div id="myBtnContainer">
+<div class="myBtnContainer">
   <button class="btn active" onclick="filterSelection('all')">Show all</button>
   <button class="btn" onclick="filterSelection('Breakfast')">Breakfast</button>
   <button class="btn" onclick="filterSelection('Lunch')">Lunch</button>
@@ -198,6 +261,9 @@
 </div>
 
 <script>
+  window.onload = function() {
+    filterSelection('all');
+  };
 function filterSelection(c) {
   var i;
   var filterDivs = document.getElementsByClassName("filterDiv");

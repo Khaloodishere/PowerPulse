@@ -84,43 +84,14 @@
 
     <style>
 
-                
-        body{
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
-
-        .topBar{
-            height: 75px;
-            width: 100%;
-            position: relative;
-            top: 0px;
-            display: flex;
-        }
-
-        .topBarItems{
-            position: absolute;
-            right: 0px;
-            width: auto;
-            height: 100%;
-        }
-
-        .topBarButton{
-            height: 100%;
-            width: 100px;
-            background-color: #add8e6;
-            border: solid 2px black;
-            color: white;
-            font-size: 15px;
-        }
-
-        .topBarButton:hover{
-            cursor: pointer;
-            background-color: #80a0aa;
-        }
-
-        .topBarButton:active{
-            background-color: #357f97;
-        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+              'Lucida Sans', Arial, sans-serif;
+          }     
+    
 
         .welcomeDiv{
             background: white;
@@ -208,15 +179,16 @@
         }
 
         .filterOption:active{
-            background-color: #6b6a6a;
+            background-color: #9b9b9b;
         }
 
         .exercise{
-            background-color: #add8e6;
+            background-color: #b1b1b1;
             width: 80%;
             height: 100px;
+            border: 2px #b1b1b1 solid;
+            border-radius: 5px;
             margin-left: 10%;
-            border: solid 2px black;
             display: grid;
             grid-template-columns: 25% 25% 25% 25%;
             margin-bottom: 15px;
@@ -224,11 +196,12 @@
 
         .exercise:hover{
             cursor: pointer;
-            background-color: #80a0aa;
+            background-color: #8d8d8d;
         }
 
         .exercise:active{
-            background-color: #357f97;
+            background-color: #9b9b9b;
+            color: rgb(0, 0, 0);
         }
 
         .exerciseDetails{
@@ -246,10 +219,11 @@
 
 
         .exerciseImg{
-            height: 100px;
+            height: 96px;
             position: relative;
             top: 0%;
             z-index: 0;
+            border-radius: 5px;
         }
 
         .exerciseLabel, .exerciseCount, .exercieSets{
@@ -283,7 +257,7 @@
             position: absolute;
             z-index: 3;
             right: 30px;
-            background-color: #add8e6;
+            background-color: #9b9b9b;
             width: 400px;
             height: 80%;
             top: 50%;
@@ -334,30 +308,42 @@
         
         nav {
             height: 80px;
-            background: #1ffbff;
+            background: rgb(136, 136, 136);
+            background-size: cover;
             display: flex;
-            align-items:center;
+            justify-content: space-between;
+            align-items: center;
+           
           }
-        nav a {
+          nav a {
             text-decoration: none;
-            color: #000;
-            padding: 0 1.5rem;
+            color: #ffffff;
+            font-size: larger;
+            padding: 20px;
           }
           
           nav a:hover {
-            color: #fff;
+            color: #838383;
           }
+          .logo {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-style: italic;
+            padding: 0 2rem;
+          }
+          
     </style>
 
 </head>
-<body>
-    <div class="blackBackground" id="blackBackground"></div>
+<div class="blackBackground" id="blackBackground"></div>
     <nav>
+        <a href="Home.html" target="_self"><div class="logo">PWRpulse</div></a>
         <div class="nav-items">
           <a href="Diets.html">Diets</a> <a href="Quiz.html">Take Quiz</a> <a href="sign_in.html">Sign In</a><a href="sign_up.html">Sign up</a>
         </div>
       </nav>
-   
+<body>
     <br><br><br><br><br><br>
     <div class="welcomeDiv">
         Welcome to PWRPulse! 🏋️
