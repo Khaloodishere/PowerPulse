@@ -308,13 +308,21 @@
         
         nav {
             height: 80px;
-            background: rgb(136, 136, 136);
             background-size: cover;
             display: flex;
             justify-content: space-between;
             align-items: center;
-           
+        }
+
+        .navBackground {
+            filter: blur(7px) saturate(0) contrast(1);
+            background: url(images/nav_background5.gif);
+            z-index: -1;
+            position: absolute;
+            width: 100%;
+            height: 80px;
           }
+          
           nav a {
             text-decoration: none;
             color: #ffffff;
@@ -337,9 +345,10 @@
 
 </head>
 <nav>
+    <div class="navBackground"></div>
     <a href="http://localhost/PowerPulse-main/Homepage/Home.php" target="_self"><div class="logo">PWRpulse</div></a>
     <div class="nav-items">
-      <a href="Diets.html">Diets</a> <a href="http://localhost/PowerPulse-main/Homepage/Quiz.php">Take Quiz</a> <a href="sign_in.html">Sign In</a><a href="sign_up.html">Sign up</a>
+      <a href="Diets.html">Diets</a> <a href="Quiz.php">Take Quiz</a> <a href="sign_in.html">Sign In</a><a href="sign_up.html">Sign up</a>
     </div>
   </nav>
 <div class="blackBackground" id="blackBackground"></div>

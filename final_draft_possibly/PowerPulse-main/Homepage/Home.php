@@ -14,6 +14,7 @@ session_start(); // Start the session at the beginning
 <!--nav banner-->
 <body>
   <nav>
+    <div class="navBackground"></div>
     <a><div class="logo">PWRpulse</div>  
     <div class="nav-items">
       <?php

@@ -110,9 +110,18 @@ $conn->close();
     .btn:hover {
         background-color: #c1b993;
     }
+
+    .navBackground {
+        filter: blur(7px) hue-rotate(62deg);
+        background: url(images/nav_background5.gif);
+        z-index: -1;
+        position: absolute;
+        width: 100%;
+        height: 80px;
+    }
+  
     nav {
         height: 80px;
-        background: #beb58d;
         background-size: cover;
         display: flex;
         justify-content: space-between;
@@ -141,6 +150,7 @@ $conn->close();
 </head>
 <body>
     <nav>
+    <div class="navBackground"></div>
         <a href="http://localhost/PowerPulse-main/Homepage/Home.php" target="_self"><div class="logo">PWRpulse</div></a>
         <div class="nav-items">
            <a href="Exercise.html">Exercises</a> <a href="sign_in.html">Sign In</a><a href="sign_up.html">Sign up</a>

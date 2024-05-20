@@ -49,6 +49,7 @@ if (mysqli_num_rows($result) > 0) {
 </head>
 <body>
     <nav>
+    <div class="navBackground"></div>
         <a href="http://localhost/PowerPulse-main/Homepage/Home.php" target="_self"><div class="logo">PWRpulse</div></a>
         <div class="nav-items">
             <a href="Diets.html">Diets</a>

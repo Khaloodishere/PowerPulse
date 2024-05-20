@@ -22,12 +22,19 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
       'Lucida Sans', Arial, sans-serif;
   }
-  
+  .navBackground {
+    filter: blur(7px) saturate(0);
+    background: url(images/nav_background5.gif);
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 80px;
+  }
+
   nav {
     height: 80px;
     width: 100%;
     padding: 5px;
-    background: black;
     background-size: cover;
     display: flex;
     justify-content: space-between;
