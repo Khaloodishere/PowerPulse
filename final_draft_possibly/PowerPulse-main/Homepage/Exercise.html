@@ -7,6 +7,7 @@
 
     <script>
 
+
         var showCategory = true;
         var showDuration = true;
         var showOrder    = true;
@@ -14,13 +15,58 @@
         function cyclePhotos() {
             var Pushups = document.getElementById('pushup-Image');
             var PushupsDetails = document.getElementById('detailsImage-pushups');
-            var delayInSeconds = 1;                            
+
+
+            var feetElevatedPushups = document.getElementById('feetElevatedPushups-Image');
+            var feetElevatedPushupsDetails = document.getElementById('detailsImage-feetElevatedPushups');
+
+
+            var handsElevatedPushups = document.getElementById('handsElevatedPushups-Image');
+            var handsElevatedPushupsDetails = document.getElementById('detailsImage-handsElevatedPushups');
+
+            var benchDip = document.getElementById('benchDip-Image');
+            var benchDipDetails = document.getElementById('detailsImage-benchDip');
+
+            var airSquats = document.getElementById('airSquats-Image');
+            var airSquatsDetails = document.getElementById('detailsImage-airSquats');
+
+            var forwardLunge = document.getElementById('forwardLunge-Image');
+            var forwardLungeDetails = document.getElementById('detailsImage-forwardLunge');
+
+            var butterflySitups = document.getElementById('butterflySitups-Image');
+            var butterflySitupsDetails = document.getElementById('detailsImage-butterflySitups');
+
+            var delayInSeconds = 1;
+
+
             var pushupsImages = ['Assets/aimations/Pushups/pic1.png', 'Assets/aimations/Pushups/pic2.png'];
+            var feetElevatedPushupsImages = ['Assets/aimations/feetElevatedPushups/pic1.png', 'Assets/aimations/feetElevatedPushups/pic2.png'];
+            var handsElevatedPushupsImages = ['Assets/aimations/handsElevatedPushups/pic1.png', 'Assets/aimations/handsElevatedPushups/pic2.png'];
+            var benchDipImages = ['Assets/aimations/benchDip/pic1.png', 'Assets/aimations/benchDip/pic2.png'];
+            var airSquatsImages = ['Assets/aimations/air-squat/pic1.png', 'Assets/aimations/air-squat/pic2.png'];
+            var forwardLungeImages = ['Assets/aimations/forwardLunge/pic1.png', 'Assets/aimations/forwardLunge/pic2.png'];
+            var butterflySitupsImages = ['Assets/aimations/butterflySitup/pic1.png', 'Assets/aimations/butterflySitup/pic2.png'];
+
             var num = 0;
             var changeImage = function() {
+
+
                 num++;
                 Pushups.src = pushupsImages[num];
                 PushupsDetails.src = pushupsImages[num];
+                feetElevatedPushups.src = feetElevatedPushupsImages[num];
+                feetElevatedPushupsDetails.src = feetElevatedPushupsImages[num];
+                handsElevatedPushups.src = handsElevatedPushupsImages[num];
+                handsElevatedPushupsDetails.src = handsElevatedPushupsImages[num];
+                benchDip.src = benchDipImages[num];
+                benchDipDetails.src = benchDipImages[num];
+                airSquats.src = airSquatsImages[num];
+                airSquatsDetails.src = airSquatsImages[num];
+                forwardLunge.src = forwardLungeImages[num];
+                forwardLungeDetails.src = forwardLungeImages[num];
+                butterflySitups.src = butterflySitupsImages[num];
+                butterflySitupsDetails.src = butterflySitupsImages[num];
+
                 if (num === 1) {
                     num = -1;
                 }
@@ -83,15 +129,14 @@
     </script>
 
     <style>
-
-        * {
+ * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
               'Lucida Sans', Arial, sans-serif;
           }     
-    
+
 
         .welcomeDiv{
             background: white;
@@ -134,7 +179,7 @@
             top: 50%;
             transform: translate(0, -50%);
             color: black;
-            
+
         }
 
         .filterIcon{
@@ -205,7 +250,7 @@
         }
 
         .exerciseDetails{
-            position: absolute;
+            position: fixed;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
@@ -232,7 +277,7 @@
         }
 
         .blackBackground{
-            position: absolute;
+            position: fixed;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
@@ -244,13 +289,13 @@
             visibility: hidden;
         }
 
-        .detailsImage-pushups{
+        .detailsImage{
             height: 100%;
             position: relative;
             left: 50px;
             top: 50%;
             transform: translateY(-50%);
-            
+
         }
 
         .details{
@@ -305,7 +350,6 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-        
         nav {
             height: 80px;
             background-size: cover;
