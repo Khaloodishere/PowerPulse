@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <script>
+    <title>Exercises page</title>
+     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" ></script>
+    <script >
 
 
         var showCategory = true;
         var showDuration = true;
-        var showOrder    = true;
 
         function cyclePhotos() {
             var Pushups = document.getElementById('pushup-Image');
@@ -90,52 +90,67 @@
             if(filterToShow === "Category" && showCategory) {
                 document.getElementById("Category").style.visibility = "visible";
                 document.getElementById("Duration").style.visibility = "hidden";
-                document.getElementById("Order").style.visibility    = "hidden";
                 showCategory = false;
                 showDuration = true;
-                showOrder = true;
             } else if(filterToShow === "Duration" && showDuration) {
                 document.getElementById("Category").style.visibility = "hidden";
                 document.getElementById("Duration").style.visibility = "visible";
-                document.getElementById("Order").style.visibility    = "hidden";
                 showDuration = false;
                 showCategory = true;
-                showOrder = true;
             } else if(filterToShow === "Order" && showOrder) {
                 document.getElementById("Category").style.visibility = "hidden";
                 document.getElementById("Duration").style.visibility = "hidden";
-                document.getElementById("Order").style.visibility    = "visible";
                 showDuration = true;
                 showCategory = true;
-                showOrder = false;
             } else {
                 document.getElementById("Category").style.visibility = "hidden";
                 document.getElementById("Duration").style.visibility = "hidden";
-                document.getElementById("Order").style.visibility    = "hidden";
                 showCategory = true;
                 showDuration = true;
-                showOrder = true;
+            }
+        }
+
+
+        function filterSelection(c) {
+            var i;
+            var filterDivs = document.getElementsByClassName("exercise");
+
+            if (c === "all") {
+                for (i = 0; i < filterDivs.length; i++) {
+                    filterDivs[i].style.display = "grid";
+                }
+            } else {
+                for (i = 0; i < filterDivs.length; i++) {
+                    if (filterDivs[i].classList.contains(c)) {
+                        filterDivs[i].style.display = "grid";
+                    } else {
+                        filterDivs[i].style.display = "none";
+                    }
+                }
             }
         }
 
 
 
 
-
         window.onload=function() {
-        cyclePhotos();
+            filterSelection('all');
         }
+        
+        $(document).ready(function() {
+            $(".exercise").animate({opacity: 1, marginLeft: '10%'});
+            cyclePhotos();
+        });
 
     </script>
 
     <style>
- * {
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-              'Lucida Sans', Arial, sans-serif;
-          }     
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }     
 
 
         .welcomeDiv{
@@ -198,8 +213,8 @@
 
         }
 
-        .Category, .Duration, .Order{
-            background-color: #b1b1b1;
+        .Category, .Duration{
+            background-color: #919191;
             width: 200px;
             height: 185px;
             position: absolute;
@@ -213,10 +228,7 @@
             height: 200px;
         }
 
-        .Order{
-            left: calc(10% + 465px);
-            height: 145px;
-        }
+        
 
         .filterOption:hover{
             cursor: pointer;
@@ -233,10 +245,11 @@
             height: 100px;
             border: 2px #b1b1b1 solid;
             border-radius: 5px;
-            margin-left: 10%;
-            display: grid;
+            margin-left: 0;
+            display: none;
             grid-template-columns: 25% 25% 25% 25%;
             margin-bottom: 15px;
+            opacity: 0;
         }
 
         .exercise:hover{
@@ -385,6 +398,7 @@
             padding: 0 2rem;
           }
           
+          
     </style>
 
 </head>
@@ -409,37 +423,31 @@
     <div class="filter">
         <div class="filterButton" onclick="toggleFilter('Category')"><div class="filterLabel">Category</div><img class="filterIcon" src="Assets/icons/category.png" alt="category Icon"></div>
         <div class="Category" id="Category">
-            <div class="filterOption">Arm workouts</div>
-            <div class="filterOption">Leg workouts</div>
-            <div class="filterOption">Chest workouts</div>
-            <div class="filterOption">Clear</div>
+            <div class="filterOption" onclick="filterSelection('arm');" >Arm workouts</div>
+            <div class="filterOption" onclick="filterSelection('leg');" >Leg workouts</div>
+            <div class="filterOption" onclick="filterSelection('chest');" >Chest workouts</div>
+            <div class="filterOption" onclick="filterSelection('all');" >Show all</div>
         </div>
         <div class="filterButton" onclick="toggleFilter('Duration')"><div class="filterLabel">Duration</div><img class="filterIcon" src="Assets/icons/clock.png" alt="clock Icon"></div>
         <div class="Duration" id="Duration">
             <div class="filterOption">less than 5 minutes</div>
             <div class="filterOption">5 - 10 minutes</div>
             <div class="filterOption">more than 10 minutes</div>
-            <div class="filterOption">Clear</div>
-        </div>
-        <div class="filterButton" onclick="toggleFilter('Order')"><div class="filterLabel">Order</div><img class="filterIcon" src="Assets/icons/order.png" alt="decending order Icon"></div>
-        <div class="Order" id="Order">
-            <div class="filterOption">Ascending</div>
-            <div class="filterOption">Descending</div>
-            <div class="filterOption">Clear</div>
+            <div class="filterOption">Show all</div>
         </div>
     </div>
     <!-- pushups -->
-    <div class="exercise" onclick="showDetails('pushups')">
+    <div class="exercise arm" onclick="showDetails('pushups')">
         <img class="exerciseImg" id="pushup-Image" src="Assets/aimations/Pushups/pic1.png" alt="Pushups">
         <div class="exerciseLabel">Push Ups</div>
         <div class="exerciseCount">x15</div>
-        <div class="exercieSets">3 Sets</div>
+        <div class="exercieSets">4 min</div>
     </div>
     
     <div class="exerciseDetails" id="pushups">
         <img class="detailsImage-pushups" id="detailsImage-pushups" src="Assets/aimations/Pushups/pic1.png" alt="pushupImage">
         <div class="details">
-            <h1>Push Ups <br> x15 - 3 Sets
+            <h1>Push Ups <br> x15 - 4 min
             </h1>
             <p>
                 Assume a strong plank position, hands stacked directly below elbows and shoulders (A), bend your elbows to slowly lower your chest to the floor (B). Keep your upper arms from flaring as you push back up explosively to a straight arm position. Repeat.
@@ -451,17 +459,17 @@
     </div>
 </div>
 <!-- feetElevatedPushups -->
-<div class="exercise" onclick="showDetails('feetElevatedPushups')">
+<div class="exercise arm" onclick="showDetails('feetElevatedPushups')">
     <img class="exerciseImg" id="feetElevatedPushups-Image" src="Assets/aimations/feetElevatedPushups/pic1.png" alt="feetElevatedPushupsImage">
     <div class="exerciseLabel">Feet Elevated Pushups</div>
     <div class="exerciseCount">x15</div>
-    <div class="exercieSets">3 Sets</div>
+    <div class="exercieSets">9 mins</div>
 </div>
 
 <div class="exerciseDetails" id="feetElevatedPushups">
     <img class="detailsImage-feetElevatedPushups" id="detailsImage-feetElevatedPushups" src="Assets/aimations/feetElevatedPushups/pic1.png" alt="feetElevatedPushupsImage">
     <div class="details">
-        <h1>Feet Elevated Pushups <br> x15 - 3 Sets
+        <h1>Feet Elevated Pushups <br> x15 - 9 mins
         </h1>
         <p>
             Kick both feet up onto a box or bench. Place your hands on the floor, shoulder width apart, and create a strong plank position (A). Bend your elbows to slowly lower your nose to the ground, pause here (B), keep your upper arms from flaring out as you push back up explosively. Raise or lower the box height to increase or decrease the difficulty, respectively.
@@ -472,17 +480,17 @@
     </div>
 </div>
     <!-- handsElevatedPushups -->
-<div class="exercise" onclick="showDetails('handsElevatedPushups')">
+<div class="exercise arm" onclick="showDetails('handsElevatedPushups')">
     <img class="exerciseImg" id="handsElevatedPushups-Image" src="Assets/aimations/handsElevatedPushups/pic1.png" alt="handsElevatedPushupsImage">
     <div class="exerciseLabel">Hand Elevated Pushups</div>
     <div class="exerciseCount">x15</div>
-    <div class="exercieSets">3 Sets</div>
+    <div class="exercieSets">2 min</div>
 </div>
 
 <div class="exerciseDetails" id="handsElevatedPushups">
     <img class="detailsImage-handsElevatedPushups" id="detailsImage-handsElevatedPushups" src="Assets/aimations/handsElevatedPushups/pic1.png" alt="handsElevatedPushupsImage">
     <div class="details">
-        <h1>Feet Elevated Pushups <br> x15 - 3 Sets
+        <h1>Feet Elevated Pushups <br> x15 - 2 min
         </h1>
         <p>
             Place your hands shoulder-width apart on a bench or box, assuming a strong plank position (A), bend your elbows to slowly lower your chest to the bench, pause here (B). Keep your upper arms from flaring out as you push back up explosively to a straight arm position. Repeat. Raise or lower the box height to decrease or increase the difficulty, respectively.
@@ -493,17 +501,17 @@
     </div>
 </div>
     <!-- benchDip -->
-<div class="exercise" onclick="showDetails('benchDip')">
+<div class="exercise arm" onclick="showDetails('benchDip')">
     <img class="exerciseImg" id="benchDip-Image" src="Assets/aimations/benchDip/pic1.png" alt="benchDipImage">
     <div class="exerciseLabel">Bench Dip</div>
     <div class="exerciseCount">x15</div>
-    <div class="exercieSets">3 Sets</div>
+    <div class="exercieSets">12 min</div>
 </div>
 
 <div class="exerciseDetails" id="benchDip">
     <img class="detailsImage-benchDip" id="detailsImage-benchDip" src="Assets/aimations/benchDip/pic1.png" alt="benchDipImage">
     <div class="details">
-        <h1>Feet Elevated Pushups <br> x15 - 3 Sets
+        <h1>Feet Elevated Pushups <br> x15 - 12 min
         </h1>
         <p>
             Place your hands shoulder-width apart on a bench or box, assuming a strong plank position (A), bend your elbows to slowly lower your chest to the bench, pause here (B). Keep your upper arms from flaring out as you push back up explosively to a straight arm position. Repeat. Raise or lower the box height to decrease or increase the difficulty, respectively.
@@ -514,17 +522,17 @@
     </div>
 </div>
     <!-- airSquats -->
-<div class="exercise" onclick="showDetails('airSquats')">
+<div class="exercise leg" onclick="showDetails('airSquats')">
     <img class="exerciseImg" id="airSquats-Image" src="Assets/aimations/air-squat/pic1.png" alt="airSquatsImage">
     <div class="exerciseLabel">Air Squats</div>
     <div class="exerciseCount">x15</div>
-    <div class="exercieSets">3 Sets</div>
+    <div class="exercieSets">3 min</div>
 </div>
 
 <div class="exerciseDetails" id="airSquats">
     <img class="detailsImage-airSquats" id="detailsImage-airSquats" src="Assets/aimations/air-squat/pic1.png" alt="airSquatsImage">
     <div class="details">
-        <h1>Feet Elevated Pushups <br> x15 - 3 Sets
+        <h1>Feet Elevated Pushups <br> x15 - 3 min
         </h1>
         <p>
             Standing tall with your chest up (A), sink your hips back and bend at the knees, squatting down until the crease of your hips passes below your knee (B). Drive back up explosively and repeat, try to keep your heels on the ground and torso upright.
@@ -535,17 +543,17 @@
     </div>
 </div>
 <!-- forwardLunge -->
-<div class="exercise" onclick="showDetails('forwardLunge')">
+<div class="exercise legs" onclick="showDetails('forwardLunge')">
     <img class="exerciseImg" id="forwardLunge-Image" src="Assets/aimations/forwardLunge/pic1.png" alt="forwardLungeImage">
     <div class="exerciseLabel">Forward Lunge</div>
     <div class="exerciseCount">x15</div>
-    <div class="exercieSets">3 Sets</div>
+    <div class="exercieSets">7 min</div>
 </div>
 
 <div class="exerciseDetails" id="forwardLunge">
     <img class="detailsImage-airSquats" id="detailsImage-forwardLunge" src="Assets/aimations/forwardLunge/pic1.png" alt="forwardLungeImage">
     <div class="details">
-        <h1>Feet Elevated Pushups <br> x15 - 3 Sets
+        <h1>Feet Elevated Pushups <br> x15 - 7 min
         </h1>
         <p>
             Stand tall with your chest up (A), take a step forward with one leg, bending the at the knee until the back knee gently touches the ground (B). Stand up explosively, pause and repeat with the opposite leg. Alternate legs unless otherwise other stated.
@@ -556,17 +564,17 @@
     </div>
 </div>
 <!-- butterflySitups -->
-<div class="exercise" onclick="showDetails('butterflySitups')">
+<div class="exercise chest" onclick="showDetails('butterflySitups')">
     <img class="exerciseImg" id="butterflySitups-Image" src="Assets/aimations/butterflySitup/pic1.png" alt="butterflySitupsImage">
     <div class="exerciseLabel">Butterfly Sit Up</div>
     <div class="exerciseCount">x15</div>
-    <div class="exercieSets">3 Sets</div>
+    <div class="exercieSets">4 min</div>
 </div>
 
 <div class="exerciseDetails" id="butterflySitups">
     <img class="detailsImage-airSquats" id="detailsImage-butterflySitups" src="Assets/aimations/butterflySitup/pic1.png" alt="butterflySitupsImage">
     <div class="details">
-        <h1>Feet Elevated Pushups <br> x15 - 3 Sets
+        <h1>Feet Elevated Pushups <br> x15 - 4 min
         </h1>
         <p>
             Lay flat on your back with your legs bent, the soles of your feet together and your hands behind your head (A). Tense your abs as you sit up and forward, touching your hands to your feet (B). Reverse the move, touching the floor behind your head on each rep.
